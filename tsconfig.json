@@ -3,8 +3,7 @@
         "module": "commonjs",
         "removeComments": true,
         "target": "es5",
-        "sourceMap": true,
-        "jsx": "react"
+        "sourceMap": true
     },
     "exclude": [
         "node_modules"
