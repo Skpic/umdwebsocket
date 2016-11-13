@@ -40,16 +40,16 @@ define(["require", "exports"], function (require, exports) {
                 _this._onError();
             };
         };
+        // only support send arraybuffer
         umdwebsocket.prototype.send = function (buf) {
-            if (this.ws.readyState === this.ws.OPEN) {
-                this.ws.send(buf);
-            }
-            else if (this.ws.readyState === this.ws.CLOSED) {
-                console.log("[umdwebsocket] readyState=close. reconnect");
-                clearTimeout(this.timer);
-                delete this.ws;
-                this.connect();
-            }
+            this.ws.send(buf);
+        };
+        // reset connect and emit _onClose
+        umdwebsocket.prototype.reset = function () {
+            clearTimeout(this.timer);
+            delete this.ws;
+            this._onClose();
+            this.connect();
         };
         return umdwebsocket;
     }());

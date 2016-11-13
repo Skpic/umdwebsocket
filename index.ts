@@ -54,16 +54,17 @@ export default class umdwebsocket {
 
   }
 
+  // only support send arraybuffer
   send(buf: ArrayBuffer | string) {
-    if (this.ws.readyState === this.ws.OPEN) {
-      this.ws.send(buf);
-    } else if (this.ws.readyState === this.ws.CLOSED) {
-      console.log("[umdwebsocket] readyState=close. reconnect");
-      clearTimeout(this.timer);
-      delete this.ws;
-      this.connect();
-    }
+    this.ws.send(buf);
+  }
 
+  // reset connect and emit _onClose
+  reset() {
+    clearTimeout(this.timer);
+    delete this.ws;
+    this._onClose();
+    this.connect();
   }
 
 }
