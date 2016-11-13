@@ -1,24 +1,19 @@
-export type onMessageCallback = (buf: ArrayBuffer|string) => void;
-export type onOpenCallback = () => void;
-export type onCloseCallback = () => void;
-export type onErrorCallback = () => void;
-
-export class umdwebsocket {
-
-    constructor(addr: string, proto: string, reconnectMaxTimeS: number,
-        _onMessage: onMessageCallback,_onOpen: onOpenCallback,
-        _onClose: onCloseCallback,_onError: onErrorCallback
-    );
-
-    /**
-     * send buf
-     */
-    send(buf: ArrayBuffer|string);
-
-    /**
-     * close
-     */
-    close();
+export declare type onMessageCallback = (buf: ArrayBuffer | string) => void;
+export declare type onOpenCallback = () => void;
+export declare type onCloseCallback = () => void;
+export declare type onErrorCallback = () => void;
+export default class umdwebsocket {
+    private addr;
+    private proto;
+    private reconnectMaxTimeS;
+    private _onMessage;
+    private _onOpen;
+    private _onClose;
+    private _onError;
+    private ws;
+    private nowMs;
+    private timer;
+    private connect();
+    constructor(addr: string, proto: string, reconnectMaxTimeS: number, _onMessage: onMessageCallback, _onOpen: onOpenCallback, _onClose: onCloseCallback, _onError: onErrorCallback);
+    send(buf: ArrayBuffer | string): void;
 }
-
-export default umdwebsocket;

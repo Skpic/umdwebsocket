@@ -1,11 +1,17 @@
 {
-    "compilerOptions": {
-        "module": "commonjs",
-        "removeComments": true,
-        "target": "es5",
-        "sourceMap": true
-    },
-    "exclude": [
-        "node_modules"
-    ]
+  "compilerOptions": {
+    "module": "amd",
+    "target": "es3",
+    "declaration": true,
+    "sourceMap": true,
+    "strictNullChecks": true,
+    "newLine": "lf"
+  },
+  "compileOnSave": false,
+  "atom": {
+    "rewriteTsconfig": false
+  },
+  "exclude": [
+    "node_modules"
+  ]
 }

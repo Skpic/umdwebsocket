@@ -1,16 +1,15 @@
-## umdwebsocket
+# umdwebsocket
 
-a websocket util 
+a websocket util
 
-### usage
+## usage
 
 ```bash
-    npm install umdwebsocket
+npm install umdwebsocket
 ```
 
-### example
+## example
 
 ```javascript
-    var websocke = require('umdwebsocket');
- 
+var websocke = require('umdwebsocket');
 ```
