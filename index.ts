@@ -26,6 +26,7 @@ export default class umdwebsocket {
 
     this.ws.onclose = (event) => {
       console.log("[umdwebsocket] reconnect", this.addr, "in", this.nowMs, "ms");
+      delete this.ws;
       this._onClose();
 
       this.timer = setTimeout(() => {
@@ -62,6 +63,7 @@ export default class umdwebsocket {
   // reset connect and emit _onClose
   reset() {
     clearTimeout(this.timer);
+    console.log("[umdwebsocket] reconnect", this.addr, "initiative");
     delete this.ws;
     this._onClose();
     this.connect();

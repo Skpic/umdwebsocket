@@ -26,6 +26,7 @@ define(["require", "exports"], function (require, exports) {
             };
             this.ws.onclose = function (event) {
                 console.log("[umdwebsocket] reconnect", _this.addr, "in", _this.nowMs, "ms");
+                delete _this.ws;
                 _this._onClose();
                 _this.timer = setTimeout(function () {
                     _this.connect();
@@ -47,6 +48,7 @@ define(["require", "exports"], function (require, exports) {
         // reset connect and emit _onClose
         umdwebsocket.prototype.reset = function () {
             clearTimeout(this.timer);
+            console.log("[umdwebsocket] reconnect", this.addr, "initiative");
             delete this.ws;
             this._onClose();
             this.connect();
