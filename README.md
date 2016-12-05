@@ -2,6 +2,8 @@
 
 a irresponsible websocket client util
 
+umdwebsocket = unsafe m* d* websocket
+
 ## usage
 
 ```bash
