@@ -1,7 +1,7 @@
 {
   "name": "umdwebsocket",
-  "version": "1.1.1",
-  "description": "a websocket util",
+  "version": "1.1.3",
+  "description": "a irresponsible websocket client util",
   "license": "MIT",
   "main": "./index.js",
   "typings": "./index.d.ts",

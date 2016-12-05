@@ -57,7 +57,13 @@ export default class umdwebsocket {
 
   // only support send arraybuffer
   send(buf: ArrayBuffer | string) {
-    this.ws.send(buf);
+    if (this.ws && this.ws.send && this.ws.readyState === this.ws.OPEN) {
+      try {
+        this.ws.send(buf);
+      } catch (e) {
+
+      }
+    }
   }
 
   // reset connect and emit _onClose

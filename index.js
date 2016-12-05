@@ -50,7 +50,13 @@
         };
         // only support send arraybuffer
         umdwebsocket.prototype.send = function (buf) {
-            this.ws.send(buf);
+            if (this.ws && this.ws.send && this.ws.readyState === this.ws.OPEN) {
+                try {
+                    this.ws.send(buf);
+                }
+                catch (e) {
+                }
+            }
         };
         // reset connect and emit _onClose
         umdwebsocket.prototype.reset = function () {
