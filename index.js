@@ -55,7 +55,7 @@ define(["require", "exports"], function (require, exports) {
         };
         return umdwebsocket;
     }());
-    exports.__esModule = true;
-    exports["default"] = umdwebsocket;
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.default = umdwebsocket;
 });
 //# sourceMappingURL=index.js.map
