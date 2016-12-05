@@ -1,6 +1,6 @@
 # umdwebsocket
 
-a websocket util
+a websocket client util
 
 ## usage
 
