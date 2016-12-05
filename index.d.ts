@@ -14,7 +14,7 @@ export default class umdwebsocket {
     private nowMs;
     private timer;
     private connect();
-    constructor(addr: string, proto: string, reconnectMaxTimeS: number, _onMessage: onMessageCallback, _onOpen: onOpenCallback, _onClose: onCloseCallback, _onError: onErrorCallback);
+    constructor(addr: string, proto: string | Array<string>, reconnectMaxTimeS: number, _onMessage: onMessageCallback, _onOpen: onOpenCallback, _onClose: onCloseCallback, _onError: onErrorCallback);
     send(buf: ArrayBuffer | string): void;
     reset(): void;
 }

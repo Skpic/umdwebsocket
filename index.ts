@@ -19,13 +19,13 @@ export default class umdwebsocket {
     };
 
     this.ws.onopen = () => {
-      console.log("[umdwebsocket] connect Success");
+      // console.log("[umdwebsocket] connect Success");
       this.nowMs = 100;
       this._onOpen();
     };
 
     this.ws.onclose = () => {
-      console.log("[umdwebsocket] reconnect", this.addr, "in", this.nowMs, "ms");
+      // console.log("[umdwebsocket] reconnect", this.addr, "in", this.nowMs, "ms");
       delete this.ws;
       this._onClose();
 
@@ -40,13 +40,13 @@ export default class umdwebsocket {
     };
 
     this.ws.onerror = () => {
-      console.log("[umdwebsocket] connect Error");
+      // console.log("[umdwebsocket] connect Error");
       this._onError();
     };
 
   }
 
-  constructor(private addr: string, private proto: string, private reconnectMaxTimeS: number,
+  constructor(private addr: string, private proto: string | Array<string>, private reconnectMaxTimeS: number,
     private _onMessage: onMessageCallback, private _onOpen: onOpenCallback,
     private _onClose: onCloseCallback, private _onError: onErrorCallback
   ) {
@@ -63,7 +63,7 @@ export default class umdwebsocket {
   // reset connect and emit _onClose
   reset() {
     clearTimeout(this.timer);
-    console.log("[umdwebsocket] reconnect", this.addr, "initiative");
+    // console.log("[umdwebsocket] reconnect", this.addr, "initiative");
     delete this.ws;
     this._onClose();
     this.connect();

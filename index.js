@@ -27,12 +27,12 @@
                 _this._onMessage(event.data);
             };
             this.ws.onopen = function () {
-                console.log("[umdwebsocket] connect Success");
+                // console.log("[umdwebsocket] connect Success");
                 _this.nowMs = 100;
                 _this._onOpen();
             };
             this.ws.onclose = function () {
-                console.log("[umdwebsocket] reconnect", _this.addr, "in", _this.nowMs, "ms");
+                // console.log("[umdwebsocket] reconnect", this.addr, "in", this.nowMs, "ms");
                 delete _this.ws;
                 _this._onClose();
                 _this.timer = setTimeout(function () {
@@ -44,7 +44,7 @@
                 }
             };
             this.ws.onerror = function () {
-                console.log("[umdwebsocket] connect Error");
+                // console.log("[umdwebsocket] connect Error");
                 _this._onError();
             };
         };
@@ -55,7 +55,7 @@
         // reset connect and emit _onClose
         umdwebsocket.prototype.reset = function () {
             clearTimeout(this.timer);
-            console.log("[umdwebsocket] reconnect", this.addr, "initiative");
+            // console.log("[umdwebsocket] reconnect", this.addr, "initiative");
             delete this.ws;
             this._onClose();
             this.connect();
