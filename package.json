@@ -1,6 +1,6 @@
 {
   "name": "umdwebsocket",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "a websocket util",
   "license": "MIT",
   "main": "./index.js",

@@ -18,13 +18,13 @@ export default class umdwebsocket {
       this._onMessage(event.data);
     };
 
-    this.ws.onopen = (event) => {
+    this.ws.onopen = () => {
       console.log("[umdwebsocket] connect Success");
       this.nowMs = 100;
       this._onOpen();
     };
 
-    this.ws.onclose = (event) => {
+    this.ws.onclose = () => {
       console.log("[umdwebsocket] reconnect", this.addr, "in", this.nowMs, "ms");
       delete this.ws;
       this._onClose();
@@ -39,7 +39,7 @@ export default class umdwebsocket {
       }
     };
 
-    this.ws.onerror = (event) => {
+    this.ws.onerror = () => {
       console.log("[umdwebsocket] connect Error");
       this._onError();
     };

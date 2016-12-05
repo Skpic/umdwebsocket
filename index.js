@@ -19,12 +19,12 @@ define(["require", "exports"], function (require, exports) {
             this.ws.onmessage = function (event) {
                 _this._onMessage(event.data);
             };
-            this.ws.onopen = function (event) {
+            this.ws.onopen = function () {
                 console.log("[umdwebsocket] connect Success");
                 _this.nowMs = 100;
                 _this._onOpen();
             };
-            this.ws.onclose = function (event) {
+            this.ws.onclose = function () {
                 console.log("[umdwebsocket] reconnect", _this.addr, "in", _this.nowMs, "ms");
                 delete _this.ws;
                 _this._onClose();
@@ -36,7 +36,7 @@ define(["require", "exports"], function (require, exports) {
                     _this.nowMs = _this.reconnectMaxTimeS * 1000;
                 }
             };
-            this.ws.onerror = function (event) {
+            this.ws.onerror = function () {
                 console.log("[umdwebsocket] connect Error");
                 _this._onError();
             };
