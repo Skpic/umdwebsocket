@@ -27,7 +27,7 @@ var umdwebsocket = (function () {
             // console.log("[umdwebsocket] reconnect", this.addr, "in", this.nowMs, "ms");
             delete _this.ws;
             _this._onClose();
-            _this.timer = setTimeout(function () {
+            setTimeout(function () {
                 _this.connect();
             }, _this.nowMs);
             _this.nowMs = _this.nowMs * 2;
@@ -52,11 +52,8 @@ var umdwebsocket = (function () {
     };
     // reset connect and emit _onClose
     umdwebsocket.prototype.reset = function () {
-        clearTimeout(this.timer);
         // console.log("[umdwebsocket] reconnect", this.addr, "initiative");
-        delete this.ws;
-        this._onClose();
-        this.connect();
+        this.ws.close();
     };
     return umdwebsocket;
 }());

@@ -7,8 +7,7 @@ export type onErrorCallback = () => void;
 export default class umdwebsocket {
 
   private ws: WebSocket;
-  private nowMs: number;
-  private timer: number;
+  private nowMs = 100;
 
   private connect() {
     this.ws = new WebSocket(this.addr, this.proto);
@@ -29,7 +28,7 @@ export default class umdwebsocket {
       delete this.ws;
       this._onClose();
 
-      this.timer = setTimeout(() => {
+      setTimeout(() => {
         this.connect();
       }, this.nowMs);
       this.nowMs = this.nowMs * 2;
@@ -50,9 +49,7 @@ export default class umdwebsocket {
     private _onMessage: onMessageCallback, private _onOpen: onOpenCallback,
     private _onClose: onCloseCallback, private _onError: onErrorCallback
   ) {
-    this.nowMs = 100;
     this.connect();
-
   }
 
   // only support send arraybuffer
@@ -68,11 +65,8 @@ export default class umdwebsocket {
 
   // reset connect and emit _onClose
   reset() {
-    clearTimeout(this.timer);
     // console.log("[umdwebsocket] reconnect", this.addr, "initiative");
-    delete this.ws;
-    this._onClose();
-    this.connect();
+    this.ws.close();
   }
 
 }
