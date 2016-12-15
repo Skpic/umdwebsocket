@@ -25,7 +25,6 @@ export default class umdwebsocket {
 
     this.ws.onclose = () => {
       // console.log("[umdwebsocket] reconnect", this.addr, "in", this.nowMs, "ms");
-      delete this.ws;
       this._onClose();
 
       setTimeout(() => {
@@ -52,7 +51,7 @@ export default class umdwebsocket {
     this.connect();
   }
 
-  // only support send arraybuffer
+  // only support send arraybuffer or string
   send(buf: ArrayBuffer | string) {
     if (this.ws && this.ws.send && this.ws.readyState === this.ws.OPEN) {
       try {
@@ -63,9 +62,8 @@ export default class umdwebsocket {
     }
   }
 
-  // reset connect and emit _onClose
+  // reset connect
   reset() {
-    // console.log("[umdwebsocket] reconnect", this.addr, "initiative");
     this.ws.close();
   }
 

@@ -25,7 +25,6 @@ var umdwebsocket = (function () {
         };
         this.ws.onclose = function () {
             // console.log("[umdwebsocket] reconnect", this.addr, "in", this.nowMs, "ms");
-            delete _this.ws;
             _this._onClose();
             setTimeout(function () {
                 _this.connect();
@@ -40,7 +39,7 @@ var umdwebsocket = (function () {
             _this._onError();
         };
     };
-    // only support send arraybuffer
+    // only support send arraybuffer or string
     umdwebsocket.prototype.send = function (buf) {
         if (this.ws && this.ws.send && this.ws.readyState === this.ws.OPEN) {
             try {
@@ -50,9 +49,8 @@ var umdwebsocket = (function () {
             }
         }
     };
-    // reset connect and emit _onClose
+    // reset connect
     umdwebsocket.prototype.reset = function () {
-        // console.log("[umdwebsocket] reconnect", this.addr, "initiative");
         this.ws.close();
     };
     return umdwebsocket;
